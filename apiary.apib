@@ -191,63 +191,150 @@ And in later sections you will be able to gather.
 
 </table>
 
-### Create Order [POST]
+### Create Order [POST/orderCreate]
 
 This API guide will be used for creating order in BEONE system to collect shipment data values for clients. 
 <strong>URL: beone.com.sa/api/v1/orderCreate</strong>
 
-
-
-
 + Request (application/json)
 
-        {
-            "account_no":"2piq5l4n7d1yc",
-            "secret_key":"e73b1f0eb2e88ea32c85f9cde1fc752e",
-            "payment_mode":"CC",
-            "cod_amount":0,
-            "reference_no":"3042622",
-            "second_reference_no":"685464646",
-            "origin_city":"Riyadh",
-            "destination_city":"Riyadh",
-            "weight":"1",
-            "service":3,
-            "productType":"parcel",
-            "sender_name":"john Doe",
-            "sender_address":"6634, Al Munsiyah, Riyadh 13249 3358, Saudi Arabia",
-            "sender_phone":"554413535",
-            "sender_email":"demo@beone.com",
-            "receiver_name":"Demo",
-            "receiver_address":"",
-            "receiver_phone":"966507310296",
-            "receiver_email":"demo2@beone.as",
-            "description":"test address"
-        }
+           {
+                "account_no": "1001XXX",
+                "secret_key": "XXXX",
+                "payment_mode": "CC",
+                "cod_amount": 0,
+                "pieces" : 2 ,
+                "reference_no": "3042622",
+                "second_reference_no": "685464646",
+                "origin_city": "Riyadh",
+                "destination_city": "Riyadh", 
+                "weight": "1",
+                "service": 3,
+                "productType": "parcel",
+                "sender_name": "Khalid Fahmy",
+                "sender_address": "6634, Al Munsiyah, Riyadh 13249 3358, Saudi Arabia",
+                "sender_phone": "507310296", 
+                "sender_email": "khaled741@beone.sa",
+                "receiver_name": "Api Testing",
+                "receiver_address": "As Sulay , 123 API testing ", 
+                "receiver_phone": "966507310296",
+                "receiver_email": "khaled741@beone.sa", 
+                "description": "test address"
+            }
 
 + Response 200 (application/json)
 
     + Headers
-
-            Location: /questions/2
-
+    
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+           {
+            "errorCode": 15,
+            "pieces": "pieces is required."
             }
+            
+            
+###  Track AWB/Order/Shipment [POST/orderTrack]
+
+Track order API is used to track the shipment with the detailed status.
+Three mandatory variables in JSON data must be requested for tracking an order detail
+<table>
+  <tr>
+    <th> S.Id</th>
+    <th> Order Status </th>
+    <th>Details</th>
+  </tr>
+  <tr>
+      <td>1</td>
+      <td>Order Booked</td>
+      <td>Order Booked in LM system</td>
+  </tr>  
+    <tr>
+      <td>3</td>
+      <td>Pickup Completed /Scanned</td>
+      <td>Pickup Completed /Scanned, Driver Name : Admin</td>
+  </tr>     
+    <tr>
+      <td>4</td>
+      <td>Received at Warehouse</td>
+      <td>Received at Warehouse</td>
+  </tr>     
+    <tr>
+      <td>5</td>
+      <td>Shelved</td>
+      <td>shipment Shelved atand shelve no is</td>
+  </tr>     
+    <tr>
+      <td>5</td>
+      <td>Shelved</td>
+      <td>Shelved using warehouse management shelve no  XXX</td>
+  </tr>     
+    <tr>
+      <td>7</td>
+      <td>OFD/Dispatched</td>
+      <td>OFD/Dispatched, Driver Name : XXXX</td>
+  </tr>     
+    <tr>
+      <td>8</td>
+      <td>Delivered</td>
+      <td>shipmet delivered to ---- and receiver mobile no.is .</td>
+  </tr>     
+
+</table>
+
++ Request (application/json)
+
+         {
+            "account_no": "1001XXX",
+            "secret_key": "XXXX",
+            "orderNo" : "BEO1341413846" 
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+    
+    + Body
+    
+        {
+            "errorCode": "0",
+            "Error_Message": "",
+            "OrderNo": "BEO1341413846",
+            "data": [
+                {
+                    "status_id": "1",
+                    "Order_status": "Order Booked",
+                    "Details": "Order Booked",
+                    "Order_description": "",
+                    "Created_date": "2024-05-22 12:17:54"
+                }
+            ]
+        }
+     
+
+            
+###  Cancel Order [POST/cancelBooked]
+
+The method is used to cancel the booked shipment from the system for the specific account
+
+
++ Request (application/json)
+
+         {
+            "account_no": "1001XXX",
+            "secret_key": "XXXX",
+             "orderNo":"BEO1341413846"
+         }
+
++ Response 200 (application/json)
+
+    + Headers
+    
+    + Body
+
+          {
+              "errorCode":"0",
+              "Error_Message":"",
+              "Success":"Order is Successfuly Cancelled from the System",
+              "OrderNo":"BEO1341413846"
+          }
