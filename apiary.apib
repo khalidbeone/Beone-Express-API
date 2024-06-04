@@ -1,11 +1,195 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: beone.com.sa/api/v1
 
 # Beone Express
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Be One Express is an experienced logistics service provider 
+based in the Kingdom of Saudi Arabia Be One Express is large enough 
+to handle all your specialized needs in specialized services. 
+We treat both customers, and partners equally, fairness, and respect. 
+Be One Express constantly It invests in the latest technology, 
+making it efficient We offer our valued customers more than one available worker. 
+We act honestly and kindly. We respect each other, 
+our community and our work Financial services at all.
 
-## Questions Collection [/questions]
+## API 
+<hr>
+
+An application program interface (API) is a set of routines, protocols, and tools for building software applications. Basically, an API specifies how software components should interact. Additionally, APIs are used when programming graphical user interface (GUI) components interact. A good API makes it easier to develop a program by providing all the building blocks. A programmer then puts the blocks together
+
+In orders tracking API, we provide a canon of accepted literary texts to the patron to ease their development process and allow simple integration with our system.
+
+This document will help you understand the theory of using be-oneAPI integration along with the help of questions in your mind, you will directly find the answers below along with the error handling
+
+
+## Lastmile API
+<hr>
+In Lastmile application we would like to dicuss in details all the parameters requirements and specifications
+in the following table view for each collection level.
+
+You do the authintication throw <strong>Secret Key & Account Number </strong> that has been sent earlier
+<ul>
+    <li>Create Order</li>
+    <li>Track Order</li>
+    <li>Cancel Order</li>
+</ul>
+
+## FulFillment API
+<hr>
+
+Coming Soon ... 
+
+
+
+## Lastmile Collection [/]
+<hr>
+###  Parameter Specifications 
+Following table contains the types of parameters pertaining to the API. 
+You can find not just the parameter type but also their purpose here. 
+And in later sections you will be able to gather.
+<table>
+  <tr>
+    <th>Parametrs</th>
+    <th>Type & Size</th>
+    <th>Description</th>
+    <th>Mandatory</th>
+    <th>Error Codes</th>
+  </tr>
+  <tr>
+      <td>account_no</td>
+      <td>Char(20)</td>
+      <td>Your shared account number</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+    <tr>
+      <td>secret_key</td>
+      <td>Varchar(50)</td>
+      <td>Your shared secret key</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>payment_mode</td>
+      <td>String</td>
+      <td>CC for cash/ COD for Cash on Delivery</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>reference_no</td>
+      <td>Char(20)</td>
+      <td>Reference number of the order</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>second_reference_no</td>
+      <td>Char(20)</td>
+      <td>Second reference number of the order</td>
+      <td>No</td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>origin_city</td>
+      <td>Varchar(255)</td>
+      <td>City of the origin of the order</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>pieces</td>
+      <td>Int</td>
+      <td>Number of pieces in the order</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>destination_city</td>
+      <td>Varchar(50)</td>
+      <td>City of destination of the order</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>weight</td>
+      <td>Float (10, 2)</td>
+      <td>Killograms</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>sender_name</td>
+      <td>Varchar (50)</td>
+      <td>Sender’s name</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>sender_address</td>
+      <td> Text</td>
+      <td>Sender’s Address</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>sender_phone</td>
+      <td>Varchar (50)</td>
+      <td>Reference id</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>sender_email</td>
+      <td>Varchar (150)</td>
+      <td>Sender Email </td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>receiver_name</td>
+      <td>Varchar (150)</td>
+      <td> Reciever Name</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>receiver_address</td>
+      <td>Varchar (250)</td>
+      <td>Reciever Address to ship</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>receiver_phone</td>
+      <td>Varchar (25)</td>
+      <td>Receiver phone</td>
+      <td>Yes</td>
+      <td>422</td>
+  </tr>
+  <tr>
+      <td>receiver_email</td>
+      <td>Varchar (100)</td>
+      <td>Receiver Email</td>
+      <td>No</td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>cod_amount</td>
+      <td>Int</td>
+      <td>Cash on delivery amount</td>
+      <td>No</td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>description</td>
+      <td>Varchar (30)</td>
+      <td>Description of the package</td>
+      <td>No</td>
+      <td></td>
+  </tr>
+
+</table>
 
 ### List All Questions [GET]
 
