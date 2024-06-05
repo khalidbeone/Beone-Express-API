@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: beone.com.sa/api/v1
+HOST: https://beone.com.sa/api/v1
 
 # Beone Express
 
@@ -198,41 +198,34 @@ This API guide will be used for creating order in BEONE system to collect shipme
 
 + Request (application/json)
 
-           {
-                "account_no": "1001XXX",
-                "secret_key": "XXXX",
-                "payment_mode": "CC",
-                "cod_amount": 0,
-                "pieces" : 2 ,
-                "reference_no": "3042622",
-                "second_reference_no": "685464646",
-                "origin_city": "Riyadh",
-                "destination_city": "Riyadh", 
-                "weight": "1",
-                "service": 3,
-                "productType": "parcel",
-                "sender_name": "Khalid Fahmy",
-                "sender_address": "6634, Al Munsiyah, Riyadh 13249 3358, Saudi Arabia",
-                "sender_phone": "507310296", 
-                "sender_email": "khaled741@beone.sa",
-                "receiver_name": "Api Testing",
-                "receiver_address": "As Sulay , 123 API testing ", 
-                "receiver_phone": "966507310296",
-                "receiver_email": "khaled741@beone.sa", 
-                "description": "test address"
-            }
+        {
+            "account_no":"ChangeXXXXXXX",
+            "secret_key":"ChangeXXXXXXX",
+            "payment_mode":"CC",
+            "cod_amount":"100",
+            "reference_no":"123m1252",
+            "origin_city":1,
+            "pieces":1,
+            "destination_city":2,
+            "weight":"1",
+            "sender_name":"Test Sender",
+            "sender_address":"شارع test، الحي test ،, Riyadh, Saudi Arabia",
+            "sender_phone":"12",
+            "sender_email":"email@email.com",
+            "receiver_name":"Test Receiver",
+            "receiver_address":"شارع test، الحي test ،, Riyadh, Saudi Arabia",
+            "receiver_phone":"145"
+        }
 
 + Response 200 (application/json)
 
-    + Headers
     
     + Body
 
            {
-            "errorCode": 15,
-            "pieces": "pieces is required."
+            "message": "User not found",
+            "errors": []
             }
-            
             
 ###  Track AWB/Order/Shipment [POST/orderTrack]
 
